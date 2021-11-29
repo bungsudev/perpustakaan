@@ -178,16 +178,16 @@
 			let search = $("#searchBuku").val();
 			cariBuku(search);
 		})
-		// $('#searchBuku').keypress(function (e) {
-		// 	if (e.which == 13) {
-		// 		$('#cariBuku').click();
-		// 	}
-		// });
+		$('#searchBuku').keypress(function (e) {
+			if (e.which == 13) {
+				$('#cariBuku').click();
+			}
+		});
 		$(document).on('keypress',function(e) {
 			if ($("#searchSiswa").val() == "") {
 				if(e.which == 13) {
 					$("#searchBuku").focus();
-					$('#cariBuku').click();
+					// $('#cariBuku').click();
 				}
 			}
 		});
