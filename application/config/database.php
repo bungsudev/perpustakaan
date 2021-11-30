@@ -6,6 +6,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+	// 'hostname' => 'localhost',
+	// 'username' => 'u705868495_pagaran',
+	// 'password' => 'nG4^JG?mV',
+	// 'database' => 'u705868495_pagaran',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',

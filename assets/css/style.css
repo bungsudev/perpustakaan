@@ -5183,7 +5183,7 @@ table tbody .border-bottom-warning td {
         color: #242934;
         margin-bottom: 0; }
     .page-wrapper.compact-wrapper .page-body-wrapper header.main-nav .sidebar-user {
-      padding: 30px;
+      padding: 30px 20px 0;
       position: relative;
       border-bottom: 1px solid #e6edef;
       margin-bottom: 20px; }
@@ -5248,7 +5248,7 @@ table tbody .border-bottom-warning td {
       display: none; }
     .page-wrapper.compact-wrapper .page-body-wrapper header.main-nav .main-navbar .nav-menu {
       border-radius: 0;
-      height: calc(100vh - 355px);
+      height: calc(100vh - 320px);
       left: -300px;
       z-index: 99;
       -webkit-transition: color 1s ease;
@@ -30943,7 +30943,9 @@ span.twitter-typeahead .tt-suggestion {
   .rtl .footer {
     padding-left: 0;
     padding-right: 0 !important; } }
-
+a.badge:hover{
+  color: #ffffff !important;
+}
 /**=====================
     60. RTL CSS Ends
 ==========================**/

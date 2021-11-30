@@ -10,7 +10,7 @@ class Profil extends CI_Controller {
 
     public function index()
 	{
-		if($this->session->userdata('id_user')){
+		if($this->session->userdata('email')){
 			$data['title'] = 'Daftar Profil';
 			$data['header'] = 'temp/header';
 			$data['content'] = 'profil/page-profil';
@@ -64,7 +64,7 @@ class Profil extends CI_Controller {
 
 	public function add()
 	{
-		if($this->session->userdata('id_user')){
+		if($this->session->userdata('email')){
 			$data['title'] = 'Tambah Profil';
 			$data['header'] = 'temp/header';
 			$data['content'] = 'profil/add-profil';
@@ -77,7 +77,7 @@ class Profil extends CI_Controller {
 
 	public function edit($id)
 	{
-		if($this->session->userdata('id_user')){
+		if($this->session->userdata('email')){
 			$data['title'] = 'Edit Profil';
 			$data['header'] = 'temp/header';
 			$data['content'] = 'profil/edit-profil';

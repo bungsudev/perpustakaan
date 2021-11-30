@@ -87,6 +87,7 @@
                         <input type="hidden" value="<?= $getuser['status'] ?>" name="status">
                         <div class="col-md-12 mt-2">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-save mr-1"></i> Update</button>
+                            <a href="<?= base_url(); ?>auth/changepass" class="btn btn-warning"><i class="fa fa-lock mr-1"></i> Ganti Password</a>
                         </div>
                     </div>
                 </div>

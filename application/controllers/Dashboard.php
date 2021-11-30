@@ -10,7 +10,12 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('id_user')){
+		if($this->session->userdata('email')){
+			$data['artikel'] = $this->Dashboard_model->artikel();
+			$data['pengumuman'] = $this->Dashboard_model->pengumuman();
+			$data['log_login'] = $this->Dashboard_model->log_login();
+			$data['komentar'] = $this->Dashboard_model->komentar();
+
 			$data['title'] = 'Beranda';
 			$data['header'] = 'temp/header';
 			$data['content'] = 'temp/dashboard';
@@ -21,35 +26,8 @@ class Dashboard extends CI_Controller {
 		}
 	}
 
-	public function listPinjamanBuku(){
-		echo json_encode($this->Dashboard_model->listPinjamanBuku());
+	public function grafik_visitor()
+	{
+		echo json_encode($this->Dashboard_model->grafik_visitor());
 	}
-
-	function get(){
-		$list = $this->Dashboard_model->listPinjamanBuku();
-        foreach ($list as $field) {
-
-            $no++;
-            $row = array();
-            $row[] = $no.".";
-            $row[] = "<b>Kode : ".$field->id_buku."</b> <br />
-				".$field->judul_buku."<br /><br />
-				ISBN : ".$field->isbn_buku."<br />"." 
-				Penulis : ".$field->penulis_buku."<br />"." 
-				Penerbit : ".$field->penerbit_buku."<br />"." 
-				Tahun Penerbit : ".date("d/m/Y", strtotime($field->tahun_penerbit));
-            $row[] = $field->lokasi_rak.' - Rak '.$field->nama_rak;
-            $data[] = $row;
-        }
- 
-        $output = array(
-            "draw" => $_POST['draw'],
-            "recordsTotal" => $this->Buku_model->count_all(),
-            "recordsFiltered" => $this->Buku_model->count_filtered(),
-            "data" => $data,
-        );
-        //output dalam format JSON
-        echo json_encode($output);
-	}
-
 }

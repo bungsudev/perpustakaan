@@ -93,18 +93,18 @@ class Auth extends CI_Controller
 		}
 	}
 
-	public function profile()
-	{
-		if ($this->session->userdata('email')) {
+	public function profile(){
+		if($this->session->userdata('email')){
 			$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 			$data['getuser'] = $this->Users_model->detail_user();
 			$data['title'] = 'Profil User';
 			$data['header'] = 'temp/header';
 			$data['content'] = 'auth/profile-user';
-			$this->load->view('layout', $data);
-		} else {
+			$this->load->view('layout',$data);
+		}else{
 			redirect('auth/login');
-		}
+		}	 
+		
 	}
 
 	public function oldlogin()
@@ -172,7 +172,7 @@ class Auth extends CI_Controller
 		// echo json_encode($data_user); die(); 
 		if ($data_user) {
 			if ($password == $data_user['password']) {
-				if ($sebagai == "Admin") {
+				if ($sebagai == "Admin" || $sebagai == "Admin Perpus") {
 					$session = [
 						'id_user' => $data_user['id_user'],
 						'nisn' => $data_user['nisn'],

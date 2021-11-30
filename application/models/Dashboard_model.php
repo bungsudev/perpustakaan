@@ -39,7 +39,7 @@ class Dashboard_model extends CI_Model
     {
         $this->db->where('id_sekolah', $this->id_sekolah);
         $this->db->order_by('id_log_login', 'desc');
-        $this->db->limit(20);
+        $this->db->limit(10);
         return $this->db->get('log_login')->result_array();
     }
 

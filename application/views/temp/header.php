@@ -56,7 +56,10 @@ $komentar = $this->db->query("select * from komentar where id_sekolah = '$id_sek
 	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/select2.css">
 	<script src="<?= base_url(); ?>assets/js/select2/select2.full.min.js"></script>
 	<!-- <script src="<?= base_url(); ?>assets/js/select2/select2-custom.js"></script> -->
+	<script type="text/javascript">
+		let base_url = '<?= base_url(); ?>';
 
+	</script>
 </head>
 
 <body>
@@ -88,7 +91,7 @@ $komentar = $this->db->query("select * from komentar where id_sekolah = '$id_sek
 						<li>
 							<div class="mode"><i class="fa fa-moon-o"></i></div>
 						</li>
-						<li class="onhover-dropdown">
+						<!-- <li class="onhover-dropdown">
 							<div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span>
 							</div>
 							<ul class="notification-dropdown onhover-show-div">
@@ -129,7 +132,7 @@ $komentar = $this->db->query("select * from komentar where id_sekolah = '$id_sek
 									</div>
 								</li>
 							</ul>
-						</li>
+						</li> -->
 						<li class="onhover-dropdown p-0">
 							<button class="btn btn-primary-light" type="button"><a
 									href="<?= base_url(); ?>auth/logout"><i data-feather="log-out"></i>Log
@@ -145,12 +148,15 @@ $komentar = $this->db->query("select * from komentar where id_sekolah = '$id_sek
 		<div class="page-body-wrapper horizontal-menu">
 			<!-- Page Sidebar Start-->
 			<header class="main-nav">
-				<div class="sidebar-user text-center"><img class="img-90 rounded-circle"
+				<div class="sidebar-user text-center"><img class="img-70 rounded-circle"
 						src="<?= base_url(); ?>assets/img/foto_anggota/<?= $this->session->userdata('image') ?>" alt="">
 					<a href="#">
 						<h6 class="mt-3 f-14 f-w-600"><?= $this->session->userdata('nama') ?></h6>
 					</a>
 					<p class="mb-0 font-roboto"><?= $this->session->userdata('level') ?></p>
+					<p>
+						<a href="<?= base_url() ?>auth/profile" class="badge badge-pill badge-primary">Edit</a>
+					</p>
 				</div>
 				<nav>
 					<div class="main-navbar">
@@ -164,9 +170,47 @@ $komentar = $this->db->query("select * from komentar where id_sekolah = '$id_sek
 								<li class="dropdown"><a class="nav-link menu-title link-nav"
 										href="<?= base_url(); ?>"><i data-feather="home"></i><span>Dashboard</span></a>
 								</li>
-								<?php if($this->session->userdata('level') == 'Admin'): ?>
+								<?php if($this->session->userdata('level') == 'Admin Perpus' || 
+								$this->session->userdata('level') == 'Admin'): ?>
+
+								<li class="sidebar-main-title">
+									<div>
+										<h6>Website </h6>
+									</div>
+								</li>
 								<li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
-											data-feather="airplay"></i><span>Master Data</span></a>
+											data-feather="settings"></i><span>Website</span></a>
+									<ul class="nav-submenu menu-content">
+										<li><a href="<?= base_url(); ?>sambutan">Sambutan</a></li>
+										<li><a href="<?= base_url(); ?>profil">Profil</a></li>
+										<li><a href="<?= base_url(); ?>pengumuman">Pengumuman</a></li>
+										<li><a href="<?= base_url(); ?>galleri">Galleri</a></li>
+										<li><a href="<?= base_url(); ?>komentar">Komentar</a></li>
+										<li><a href="<?= base_url(); ?>identitas_sekolah">Identitas Sekolah</a></li>
+									</ul>
+								</li>
+								<li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+											data-feather="book"></i><span>Artikel</span></a>
+									<ul class="nav-submenu menu-content">
+										<li><a href="<?= base_url(); ?>artikel">Artikel</a></li>
+										<li><a href="<?= base_url(); ?>kategori">Kategori</a></li>
+									</ul>
+								</li>
+								<?php elseif ($this->session->userdata('level') == 'Siswa'): ?>
+
+								<?php else: ?>
+
+								<?php endif; ?>
+								<li class="sidebar-main-title">
+									<div>
+										<h6>Perpustakaan </h6>
+									</div>
+								</li>
+								<li class="dropdown"><a class="nav-link menu-title link-nav"
+										href="<?= base_url(); ?>digilab"><i
+											data-feather="book"></i><span>Digilab</span></a></li>
+								<li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i
+											data-feather="airplay"></i><span>Master Perpus</span></a>
 									<ul class="nav-submenu menu-content">
 										<li><a href="<?= base_url(); ?>rak">Lokasi Rak</a></li>
 										<li><a href="<?= base_url(); ?>buku">Buku</a></li>
@@ -178,14 +222,6 @@ $komentar = $this->db->query("select * from komentar where id_sekolah = '$id_sek
 								<li class="dropdown"><a class="nav-link menu-title link-nav"
 										href="<?= base_url(); ?>pengembalian"><i
 											data-feather="sunset"></i><span>Pengembalian</span></a></li>
-								<?php elseif ($this->session->userdata('level') == 'Siswa'): ?>
-
-								<?php else: ?>
-                                    
-								<?php endif; ?>
-                                <li class="dropdown"><a class="nav-link menu-title link-nav"
-										href="<?= base_url(); ?>digilab"><i
-											data-feather="book"></i><span>Digilab</span></a></li>
 							</ul>
 						</div>
 						<div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

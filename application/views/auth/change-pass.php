@@ -16,7 +16,8 @@
                         <input type="password" name="new_password" class="form-control" placeholder="Password Baru"/>
                     </div>
                     <div class="form-group mb-3 mb-0 col-md-12">
-                        <button type="submit" class="btn btn-primary btn-block"> Ganti Password</button>
+                        <a href="<?= base_url(); ?>auth/profile" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Kembali</a>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-save mr-1"></i> Ganti Password</button>
                     </div>
                 </div>
             </form>
